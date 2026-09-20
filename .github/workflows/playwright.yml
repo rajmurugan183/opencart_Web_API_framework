@@ -1,0 +1,42 @@
+name: OpenCart Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          CI: true
+          VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          INVALID_USERNAME: ${{ secrets.INVALID_USERNAME }}
+          INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
+
+      - name: Upload HTML report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: reports/html-report/
+          retention-days: 30
