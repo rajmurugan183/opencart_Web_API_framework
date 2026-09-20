@@ -1,0 +1,4 @@
+{
+  "validUser": { "username": "rajubhai@gmail.com", "password": "Playwright!2030" },
+  "lockedUser": { "username": "locked_out_user", "password": "secret_sauce" }
+}
