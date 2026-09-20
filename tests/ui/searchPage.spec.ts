@@ -1,5 +1,5 @@
 import { test } from '../../src/fixtures/pagefixtures'
-import testData from '../../test-data/test-data.json'
+import testData from '../../test-data/test-data'
 
 test.beforeEach(async ({ loginPage }) => {
     const { username, password } = testData.validUser;

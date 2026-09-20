@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+     "build": "tsc",
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:chrome": "npx playwright test --project=chromium",
@@ -11,12 +12,13 @@
     "allure:open": "npx allure open allure-report",
     "allure:report": "npm run allure:generate && npm run allure:open",
     "allure:clean": "rm -rf allure-results allure-report"
-},
+  },
   "keywords": [],
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.0",
     "allure-commandline": "^2.43.0",
-    "allure-playwright": "^3.12.1"
+    "allure-playwright": "^3.12.1",
+    "dotenv": "^18.0.1"
   }
 }

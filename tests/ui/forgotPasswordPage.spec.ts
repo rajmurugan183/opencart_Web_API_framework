@@ -1,5 +1,5 @@
 import { expect, test } from '../../src/fixtures/pagefixtures'
-import testData from '../../test-data/test-data.json'
+import testData from '../../test-data/test-data'
 
 test.beforeEach(async ({ loginPage, forgotPasswordPage }) => {
     await loginPage.goToLoginPage();

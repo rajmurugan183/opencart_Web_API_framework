@@ -1,5 +1,5 @@
 import { expect, test } from '../../src/fixtures/pagefixtures'
-import testData from '../../test-data/test-data.json'
+import testData from '../../test-data/test-data'
 
 test.beforeEach(async ({ loginPage }) => {
     await loginPage.goToLoginPage();
@@ -19,8 +19,8 @@ test('forget link test', async ({ loginPage }) => {
 
 test('rejectInvalidCredentialsWithWarningMessage', async ({ loginPage }) => {
 
-    await loginPage.login('invaliduser@test.com', 'wrongPassword123');
-    await loginPage.verifyInvalidCredentialsWarning('Warning: No match for E-Mail Address and/or Password.');
+    await loginPage.login(testData.invalidUser.username, testData.invalidUser.password);
+    await loginPage.verifyInvalidCredentialsWarning(testData.invalidLoginMessage);
 });
 
 
